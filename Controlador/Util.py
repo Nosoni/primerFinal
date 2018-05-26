@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-from pickle import load
+from pickle import load, dump
+import Datos.Bd as bd
+
+path = "/home/franco/PycharmProjects/1erFinal/Datos/"
 
 
 # ________________________________FRAMEWORK__________________________________________
@@ -116,3 +119,46 @@ def encontrar_valor(lista, text):
     for val in lista:
         if str(val.cedula) == text:
             return val
+
+
+def guardar_datos():
+    """ guarda todos los cambios hechos en los datos."""
+
+    f1 = abrir(path + "/empleados", "wb")
+    dump(bd.empleados, f1)
+    f1.close()
+    f1 = abrir(path + "/clientes", "wb")
+    dump(bd.clientes, f1)
+    f1.close()
+    f1 = abrir(path + "/solicitudes", "wb")
+    dump(bd.solicitudes, f1)
+    f1.close()
+    f1 = abrir(path + "/solicitudes_baja", "wb")
+    dump(bd.solicitudes_baja, f1)
+    f1.close()
+    f1 = abrir(path + "/equipos", "wb")
+    dump(bd.equipos, f1)
+    f1.close()
+    f1 = abrir(path + "/repuestos", "wb")
+    dump(bd.repuestos, f1)
+    f1.close()
+
+
+def cargar_datos():
+    """ carga los datos"""
+
+    f1 = abrir(path + "/empleados", "rb")
+    bd.empleados = cargar(f1)
+    f1.close()
+    f1 = abrir(path + "/clientes", "rb")
+    bd.clientes = cargar(f1)
+    f1.close()
+    f1 = abrir(path + "/repuestos", "rb")
+    bd.repuestos = cargar(f1)
+    f1.close()
+    f1 = abrir(path + "/equipos", "rb")
+    bd.equipos = cargar(f1)
+    f1.close()
+    f1 = abrir(path + "/solicitudes", "rb")
+    bd.solicitudes = cargar(f1)
+    f1.close()

@@ -1,4 +1,3 @@
-import Datos.Bd as bd
 from Clases.Persona import *
 from Clases.Solicitud import *
 from Clases.Repuesto import *
@@ -6,10 +5,10 @@ from Clases.Equipo import *
 from pickle import dump
 
 
-def cargar_datos():
+def inicializar_datos():
     """Funcion que sirve para cargar algunos datos en el sistema"""
 
-    path = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/"
+    path = "/home/franco/PycharmProjects/1erFinal/Datos/"
 
     # Clientes
     bd.clientes.append(Cliente(1, "Ariel", "Curtido", "Asunción"))

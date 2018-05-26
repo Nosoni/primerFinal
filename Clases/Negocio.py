@@ -7,15 +7,8 @@ from Clases.Equipo import *
 from Clases.Repuesto import Disco, Cartucho, Memoria, Otro
 from Controlador.Util import *
 import Datos.Bd as bd
-from pickle import dump
 
 dias_garantia = 30
-path_clientes = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/clientes"
-path_empleados = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/empleados"
-path_solicitudes = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/solicitudes"
-path_solicitudes_baja = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/solicitudes_baja"
-path_equipos = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/equipos"
-path_repuestos = "/home/franco/PycharmProjects/Proyecto2doParcial/Datos/repuestos"
 
 
 class Empresa(metaclass=ABCMeta):
@@ -36,21 +29,7 @@ class Negocio(Empresa):
 
     def __init__(self):
         super().__init__()
-        f1 = abrir(path_empleados, "rb")
-        bd.empleados = cargar(f1)
-        f1.close()
-        f1 = abrir(path_clientes, "rb")
-        bd.clientes = cargar(f1)
-        f1.close()
-        f1 = abrir(path_repuestos, "rb")
-        bd.repuestos = cargar(f1)
-        f1.close()
-        f1 = abrir(path_equipos, "rb")
-        bd.equipos = cargar(f1)
-        f1.close()
-        f1 = abrir(path_solicitudes, "rb")
-        bd.solicitudes = cargar(f1)
-        f1.close()
+        cargar_datos()
 
     # ________________________________Menu___Empleados______________________________
     def add_empleado(self):
@@ -236,29 +215,9 @@ class Negocio(Empresa):
             input("\nSin datos. \nPresione enter para continuar...")
 
     def fin(self):
-        self.guardar_datos()
+        guardar_datos()
         exit()
 
-    def guardar_datos(self):
-        """ guarda todos los cambios hechos en los datos."""
-        f1 = abrir(path_empleados, "wb")
-        dump(bd.empleados, f1)
-        f1.close()
-        f1 = abrir(path_clientes, "wb")
-        dump(bd.clientes, f1)
-        f1.close()
-        f1 = abrir(path_solicitudes, "wb")
-        dump(bd.solicitudes, f1)
-        f1.close()
-        f1 = abrir(path_solicitudes_baja, "wb")
-        dump(bd.solicitudes_baja, f1)
-        f1.close()
-        f1 = abrir(path_equipos, "wb")
-        dump(bd.equipos, f1)
-        f1.close()
-        f1 = abrir(path_repuestos, "wb")
-        dump(bd.repuestos, f1)
-        f1.close()
 
     # _______________________________====MENUS====__________________________________
     def menu(self):
