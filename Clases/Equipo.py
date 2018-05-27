@@ -26,7 +26,13 @@ class Equipo():
         print(("Modelo: " + str(self.modelo)))
         print(("Detalle físico: " + str(self.detalle)))
         print(("Detalle del problema: " + str(self.detalle_problema)))
-        self.get_repuesto()
+        if self.repuestos:
+            # si existe repuesto, mostrara los datos
+            for repuesto in self.repuestos:
+                if repuesto is not None:
+                    repuesto.mostrar_datos()
+        else:
+            print("\n--Sin repuestos--")
 
     def add_repuesto(self, rep):
         """Comprueba si el repuesto que se quiere anhadir es instancia de la
@@ -38,23 +44,15 @@ class Equipo():
         else:
             print("Repuesto agregado.")
 
-    def get_repuesto(self):
-        if self.repuestos:
-            for rep in self.repuestos:
-                if rep is not None:
-                    rep.mostrar_datos()
-        else:
-            print("\n--Sin repuestos--")
-
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
         return dict(
-            nro_equipo=input_entero_r("Ingrese nro de equipo: "),
+            nro_equipo=input_entero_r("Ingrese nro de equipo"),
             tipo=input_opcion("Tipo", ("notebook", "pc mesa", "impresora", "monitor", "otro")),
-            marca=input_alpha("Marca: "),
-            modelo=input_alpha("Modelo: "),
-            detalle=input_alpha("Detalle fisico: "),
-            detalle_problema=input_alpha_r("Detalle problema: "))
+            marca=input_alpha("Marca"),
+            modelo=input_alpha("Modelo"),
+            detalle=input_alpha("Detalle fisico"),
+            detalle_problema=input_alpha_r("Detalle problema"))
 
     prompt_init = staticmethod(prompt_init)

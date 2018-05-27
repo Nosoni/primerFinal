@@ -18,7 +18,7 @@ class Repuesto(metaclass=ABCMeta):
 
     def mostrar_datos(self, name_class):
         print("\nDetalle " + name_class + "\n")
-        print("Código: " +str(self.cod))
+        print("Código: " + str(self.cod))
         print("Marca: " + self.marca)
         print("Modelo: " + self.modelo)
         print("Precio: " + str(self.precio))
@@ -26,10 +26,10 @@ class Repuesto(metaclass=ABCMeta):
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
-        return dict(cod=input_alpha("Código: "),
-                    marca=input_alpha_r("Marca: "),
-                    modelo=input_alpha("Modelo: "),
-                    precio=input_entero_r("Precio: "))
+        return dict(cod=input_alpha("Código"),
+                    marca=input_alpha_r("Marca"),
+                    modelo=input_alpha("Modelo"),
+                    precio=input_entero_r("Precio"))
 
     prompt_init = staticmethod(prompt_init)
 
@@ -46,7 +46,7 @@ class Disco(Repuesto):
 
     def mostrar_datos(self):
         super().mostrar_datos("Disco")
-        print("Capacidad: {} GB" + str(self.capacidad))  # asumimos que se manejará sólo en GB
+        print("Capacidad: " + str(self.capacidad)) + "GB."  # asumimos que se manejará sólo en GB
 
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
@@ -122,12 +122,6 @@ class Otro(Repuesto):
         super().__init__(cod, marca, modelo, precio)
         self.tipo = tipo
         self.cant_otro += 1
-
-    def get_tipo(self):
-        return self.tipo
-
-    def set_tipo(self, tipo):
-        self.tipo = tipo
 
     def mostrar_datos(self):
         super().mostrar_datos("otro")

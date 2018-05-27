@@ -20,12 +20,10 @@ class Negocio(Empresa):
     """Clase que contiene todos los menus y las funciones para modificar
     los datos del negocio"""
 
-    tipo_rep = {
-        ("disco"): Disco,
-        ("memoria"): Memoria,
-        ("cartucho"): Cartucho,
-        ("otro"): Otro
-    }
+    tipo_rep = {("disco"): Disco,
+                ("memoria"): Memoria,
+                ("cartucho"): Cartucho,
+                ("otro"): Otro}
 
     def __init__(self):
         super().__init__()
@@ -37,7 +35,11 @@ class Negocio(Empresa):
         bd.empleados.append(Empleado(**Empleado.prompt_init()))
 
     def del_empleado(self):
-        self.del_datos(bd.empleados, "Nro de documento")
+        dato = encontrar_valor(bd.empleados, "cedula", input_alpha_r("Ingrese nro de documento: "))
+        if dato:
+            self.del_datos(bd.empleados, dato)
+        else:
+            print("No se encontró el dato a eliminar.")
 
     def listar_empleado(self):
         self.listar_datos(bd.empleados)
@@ -54,7 +56,11 @@ class Negocio(Empresa):
         bd.clientes.append(Cliente(**Cliente.prompt_init()))
 
     def del_cliente(self):
-        self.del_datos(bd.clientes, "Nro de documento")
+        dato = encontrar_valor(bd.clientes, "cedula", input_alpha_r("Ingrese nro de documento: "))
+        if dato:
+            self.del_datos(bd.clientes, dato)
+        else:
+            print("No se encontró el dato a eliminar.")
 
     def listar_cliente(self):
         self.listar_datos(bd.clientes)
@@ -90,7 +96,7 @@ class Negocio(Empresa):
                     equi = encontrar_valor(bd.equipos, input_alpha_r("Ingrese nro de Equipo: "))
                 else:
                     equi = Equipo(**Equipo.prompt_init())
-                soli.equipo.append(equi)
+                soli.add_equipo(equi)
                 resp_add = input_opcion("Desea ingresar otro equipo?", ("si", "no"))
         except:
             print("Invalido")
@@ -103,31 +109,26 @@ class Negocio(Empresa):
         soli.mostrar_datos()
         resp = input_opcion("Desea dar de baja la solicitud?", ("si", "no"))
         if resp == "si":
-            soli.calc(dias_garantia)
+            print("\n----Detalles----")
+            print(("Fecha: {}".format(soli.fecha)))
+            if soli.fecha is not None:
+                print(("Garantia hasta: {}".format(soli.fecha + timedelta(days=dias_garantia))))
+            print(("Cliente: {}".format(soli.cliente.nombre + " " + soli.cliente.apellido)))
+            print(("Empleado: {}".format(soli.empleado.nombre + " " + soli.empleado.apellido)))
+            money = soli.calc()
+            soli.cambiar_estado()
             bd.solicitudes.remove(soli)
             bd.solicitudes_baja.append(soli)
+            print(("El costo total es de: Gs {}".format(money)))
         else:
             print("Cancelado.")
 
-    """llevado a solicitudes.calc"""
-    def calc(self, dato):
-        print("\n----Detalles----")
-        print(("Fecha: {}".format(dato.fecha)))
-        if dato.fecha is not None:
-            print(("Garantia hasta: {}".format(dato.fecha + timedelta(days=dias_garantia))))
-        print(("Cliente: {}".format(dato.cliente.nombre + " " + dato.cliente.apellido)))
-        print(("Empleado: {}".format(dato.empleado.nombre + " " + dato.empleado.apellido)))
-        """por cada equipo se consulta por los repuestos utilizados, y el monto de los mismos"""
-        money = 0
-        if dato.equipo:
-            for equi in dato.equipo:
-                for repuesto in equi.repuestos:
-                    money += repuesto.precio
-        print(("El costo total es de: Gs {}".format(money)))
-        print("")
-
     def del_solicitud(self):
-        self.del_datos(bd.solicitudes, "nro de Solicitud")
+        dato = encontrar_valor(bd.solicitudes, "solicitud_numero", input_alpha_r("Ingrese nro de solicitud: "))
+        if dato:
+            self.del_datos(bd.solicitudes, dato)
+        else:
+            print("No se encontró el dato a eliminar.")
 
     def list_solicitudes(self):
         self.listar_datos(bd.solicitudes)
@@ -141,7 +142,11 @@ class Negocio(Empresa):
         bd.equipos.append(Equipo(**Equipo.prompt_init()))
 
     def del_equipo(self):
-        self.del_datos(bd.equipos, "cód del equipo")
+        dato = encontrar_valor(bd.equipos, "cod", input_alpha_r("Ingrese código del equipo: "))
+        if dato:
+            self.del_datos(bd.equipos, dato)
+        else:
+            print("No se encontró el dato a eliminar.")
 
     def listar_equipos(self):
         self.listar_datos(bd.equipos)
@@ -157,19 +162,22 @@ class Negocio(Empresa):
         bd.repuestos.append(self.tipo_rep[opcion](**datos))
 
     def del_repuesto(self):
-        self.del_datos(bd.repuestos, "cód del repuesto")
+        dato = encontrar_valor(bd.repuestos, "cod", input_alpha_r("Ingrese código del equipo: "))
+        if dato:
+            self.del_datos(bd.repuestos, dato)
+        else:
+            print("No se encontró el dato a eliminar.")
 
     def listar_repuestos(self):
         self.listar_datos(bd.repuestos)
 
     # ______________________________Funciones_______________________________________
-    def del_datos(self, lista, text):
+    def del_datos(self, lista, dato):
         """Permite eliminar un objeto"""
         if lista:
-            dato = encontrar_valor(bd.solicitudes, input_alpha_r("Ingrese " + text + " : "))
             resp = input_opcion("Desea eliminar el dato?", ("si", "no"))
             if resp == "si":
-                list.remove(dato)
+                lista.remove(dato)
                 print("Eliminado.")
             else:
                 print("Cancelado.")

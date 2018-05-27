@@ -55,10 +55,10 @@ class Persona(metaclass=ABCMeta):
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
-        return dict(cedula=input_entero_r("Ingrese cédula: "),
-                    nombre=input_alpha_r("Ingrese Nombre: ").title(),
-                    apellido=input_alpha_r("Ingrese Apellido: ").title(),
-                    direccion=input_alpha("Ingrese Dirección: "))
+        return dict(cedula=input_entero_r("Ingrese cédula"),
+                    nombre=input_alpha_r("Ingrese Nombre").title(),
+                    apellido=input_alpha_r("Ingrese Apellido").title(),
+                    direccion=input_alpha("Ingrese Dirección"))
 
     prompt_init = staticmethod(prompt_init)
 
@@ -94,8 +94,8 @@ class Empleado(Persona):
         else:
             print("Sin salario.")
 
-    def actualizar_salario(self):
-        self.salario = input_entero_r("Ingrese Salario nuevo: ")
+    def actualizar_salario(self, salario):
+        self.salario = salario
 
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
@@ -103,7 +103,7 @@ class Empleado(Persona):
         parent_init = Persona.prompt_init()
         datos = Contacto.prompt_init()
         contacto = Contacto(**datos)
-        salario = input_entero_r("Ingrese Salario: ")
+        salario = input_entero_r("Ingrese Salario")
         parent_init.update({"contacto": contacto,
                             "salario": salario})
         return parent_init
@@ -143,6 +143,8 @@ class Cliente(Persona):
     def mostrar_datos(self):
         # Muestra los datos del Cliente
         Persona.mostrar_datos(self)
+        if self.ruc is not None:
+            print("Ruc:"+ str(self.ruc))
 
     def mostrar_datos_det(self):
         # Muestra los datos del Cliente detallada
@@ -158,7 +160,7 @@ class Cliente(Persona):
         parent_init = Persona.prompt_init()
         datos = Contacto.prompt_init()
         contacto = Contacto(**datos)
-        ruc = input_alpha("Ingrese Ruc: ")
+        ruc = input_alpha("Ingrese Ruc")
         parent_init.update({"contacto": contacto,
                             "ruc": ruc})
         return parent_init

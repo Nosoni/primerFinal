@@ -3,7 +3,7 @@ from Clases.Solicitud import *
 from Clases.Repuesto import *
 from Clases.Equipo import *
 from pickle import dump
-
+import inspect
 
 def inicializar_datos():
     """Funcion que sirve para cargar algunos datos en el sistema"""
@@ -11,7 +11,8 @@ def inicializar_datos():
     path = "/home/franco/PycharmProjects/1erFinal/Datos/"
 
     # Clientes
-    bd.clientes.append(Cliente(1, "Ariel", "Curtido", "Asunción"))
+    a = Cliente(1, "Ariel", "Curtido", "Asunción")
+    bd.clientes.append(a)
     bd.clientes.append(Cliente(2, "César", "Rolon", "Capiatá"))
     bd.clientes.append(Cliente(3, "Tamara", "Ocampos", "Fdo. de la Mora", None, "111111111-1"))
     bd.clientes.append(Cliente(4, "Arnaldo", "Perez", "Asunción", None, "222222222-2"))

@@ -2,6 +2,7 @@
 import os
 from pickle import load, dump
 import Datos.Bd as bd
+from Clases import Contacto, Equipo
 
 path = "/home/franco/PycharmProjects/1erFinal/Datos/"
 
@@ -98,7 +99,6 @@ def abrir(path, modo):
     y retorna el archivo"""
     try:
         f = open(path, modo)
-        return f
     except:
         print("Verifique, no se pudo encontrar el archivo " + path)
     else:
@@ -115,10 +115,14 @@ def cargar(f):
         return obj
 
 
-def encontrar_valor(lista, text):
+def encontrar_valor(lista, identificador, text):
+    """lista = en donde buscar, identificador = en que atributo buscar, texto = que buscar"""
     for val in lista:
-        if str(val.cedula) == text:
+        existe = getattr(val, identificador)
+        #if getattr(val, identificador) == text:
+        if str(existe) == text:
             return val
+    return None
 
 
 def guardar_datos():
@@ -162,3 +166,9 @@ def cargar_datos():
     f1 = abrir(path + "/solicitudes", "rb")
     bd.solicitudes = cargar(f1)
     f1.close()
+
+
+def print_objeto(objeto):
+    objeto = vars(objeto)
+    for dato in objeto:
+        print(dato[0].upper() + dato[1:] + ":", objeto[dato])
