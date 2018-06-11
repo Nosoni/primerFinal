@@ -20,10 +20,10 @@ class Negocio(Empresa):
     """Clase que contiene todos los menus y las funciones para modificar
     los datos del negocio"""
 
-    tipo_rep = {("disco"): Disco,
-                ("memoria"): Memoria,
-                ("cartucho"): Cartucho,
-                ("otro"): Otro}
+    tipo_rep = {"disco": Disco,
+                "memoria": Memoria,
+                "cartucho": Cartucho,
+                "otro": Otro}
 
     def __init__(self):
         super().__init__()
@@ -192,7 +192,8 @@ class Negocio(Empresa):
             cont = 1
             for val in lista:
                 print(("-----------------=={}==-----------------".format(cont)))
-                val.mostrar_datos()
+                print_objeto(val)
+                #val.mostrar_datos()
                 print()
                 if (cont % 5) is 0:
                     if p:
@@ -226,8 +227,7 @@ class Negocio(Empresa):
         guardar_datos()
         exit()
 
-
-    # _______________________________====MENUS====__________________________________
+    # ______________________________====MENUS====__________________________________
     def menu(self):
         """Menu principal del programa"""
         while True:
@@ -291,13 +291,13 @@ class Negocio(Empresa):
     o_solicitudes[5] = {"t": "Listar Solicitues", "f": list_solicitudes}
     o_solicitudes[6] = {"t": "Listar Solicitues Baja", "f": list_solicitudes_baja}
     o_solicitudes[7] = {"t": "Volver", "f": menu}
-    
+
     o_equipos = {}
     o_equipos[1] = {"t": "Agregar equipo", "f": add_equipo}
     o_equipos[2] = {"t": "Eliminar equipo", "f": del_equipo}
     o_equipos[3] = {"t": "Listar equipos", "f": listar_equipos}
     o_equipos[4] = {"t": "Volver", "f": menu}
-    
+
     o_repuestos = {}
     o_repuestos[1] = {"t": "Agregar repuesto", "f": add_repuesto}
     o_repuestos[2] = {"t": "Eliminar repuesto", "f": del_repuesto}

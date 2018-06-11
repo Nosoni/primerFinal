@@ -119,7 +119,6 @@ def encontrar_valor(lista, identificador, text):
     """lista = en donde buscar, identificador = en que atributo buscar, texto = que buscar"""
     for val in lista:
         existe = getattr(val, identificador)
-        #if getattr(val, identificador) == text:
         if str(existe) == text:
             return val
     return None
@@ -171,4 +170,5 @@ def cargar_datos():
 def print_objeto(objeto):
     objeto = vars(objeto)
     for dato in objeto:
-        print(dato[0].upper() + dato[1:] + ":", objeto[dato])
+        if objeto[dato] != [None]:
+            print(dato[0].upper() + dato[1:] + ":", objeto[dato])
