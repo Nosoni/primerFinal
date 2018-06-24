@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42605b58-f925-4d33-be36-e85ae8a3b9bc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Controlador/VistaUtil.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABM/abm_clientes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABM/abm_empleados.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABM/abm_equipos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABM/abm_repuestos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABM/abm_solicitudes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Clases/Usuario.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Negocio.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Negocio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controlador/Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controlador/Util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clases/Persona.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Persona.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datos/Bd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/Bd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Datos/clientes" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/clientes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Datos/empleados" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/empleados" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Datos/equipos" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/equipos" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Datos/repuestos" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/repuestos" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Datos/solicitudes" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/solicitudes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run/AppTk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run/AppTk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vistas/Vistas.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vistas/Vistas.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,32 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppTk.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Run/AppTk.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-              <folding>
-                <element signature="e#25#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Vistas.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vistas/Vistas.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VistaUtil.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Controlador/VistaUtil.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-864">
-              <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+            <state relative-caret-position="240">
+              <caret line="110" column="17" lean-forward="true" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
               </folding>
@@ -57,41 +40,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controlador/Util.py">
+      <file leaf-file-name="VistaUtil.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controlador/VistaUtil.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" selection-start-line="3" selection-end-line="4" />
+            <state relative-caret-position="-1764">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Negocio.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Clases/Negocio.py">
+      <file leaf-file-name="Util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controlador/Util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+            <state relative-caret-position="144">
+              <caret line="122" selection-start-line="122" selection-end-line="122" />
               <folding>
-                <element signature="e#25#48#0" expanded="true" />
+                <element signature="e#24#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Run/App.py">
+      <file leaf-file-name="abm_repuestos.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ABM/abm_repuestos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" selection-start-line="2" selection-end-line="3" />
+            <state relative-caret-position="54">
+              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScriptCargaDatos.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py">
+      <file leaf-file-name="Bd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Datos/Bd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="126">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Usuario.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Clases/Usuario.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abm_solicitudes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ABM/abm_solicitudes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="90" column="24" lean-forward="true" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+              <folding>
+                <element signature="e#24#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abm_clientes.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ABM/abm_clientes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="121" column="50" lean-forward="true" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
+              <folding>
+                <element signature="e#24#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Persona.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Clases/Persona.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -126,11 +151,19 @@
       <find>if isinstance(dato, type((Contacto, Equipo))):</find>
       <find>encontrar_valor</find>
       <find>Modulos</find>
+      <find>limp</find>
+      <find>eq</find>
+      <find>e</find>
+      <find>eqi</find>
+      <find>tkinter</find>
+      <find>messagebox</find>
+      <find>Atencion</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>1erFinal</replace>
       <replace>Clases</replace>
+      <replace>Atención</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -142,17 +175,24 @@
         <option value="$PROJECT_DIR$/InicializarDatos/AppTK.py" />
         <option value="$PROJECT_DIR$/InicializarDatos/AppTk.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py" />
         <option value="$PROJECT_DIR$/Clases/Contacto.py" />
         <option value="$PROJECT_DIR$/Clases/Equipo.py" />
         <option value="$PROJECT_DIR$/Clases/Repuesto.py" />
-        <option value="$PROJECT_DIR$/Clases/Persona.py" />
         <option value="$PROJECT_DIR$/Clases/Solicitud.py" />
         <option value="$PROJECT_DIR$/Clases/Negocio.py" />
         <option value="$PROJECT_DIR$/Run/AppTk.py" />
         <option value="$PROJECT_DIR$/Controlador/Util.py" />
-        <option value="$PROJECT_DIR$/Vistas/Vistas.py" />
         <option value="$PROJECT_DIR$/Controlador/VistaUtil.py" />
+        <option value="$PROJECT_DIR$/ABM/abm_empleados.py" />
+        <option value="$PROJECT_DIR$/ABM/abm_repuestos.py" />
+        <option value="$PROJECT_DIR$/ABM/abm_solicitudes.py" />
+        <option value="$PROJECT_DIR$/Clases/User.py" />
+        <option value="$PROJECT_DIR$/Datos/Bd.py" />
+        <option value="$PROJECT_DIR$/Clases/Usuario.py" />
+        <option value="$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py" />
+        <option value="$PROJECT_DIR$/Vistas/Vistas.py" />
+        <option value="$PROJECT_DIR$/Clases/Persona.py" />
+        <option value="$PROJECT_DIR$/ABM/abm_clientes.py" />
       </list>
     </option>
   </component>
@@ -177,12 +217,22 @@
             <path>
               <item name="1erFinal" type="b2602c69:ProjectViewProjectNode" />
               <item name="1erFinal" type="462c0819:PsiDirectoryNode" />
+              <item name="ABM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="1erFinal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1erFinal" type="462c0819:PsiDirectoryNode" />
               <item name="Clases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="1erFinal" type="b2602c69:ProjectViewProjectNode" />
               <item name="1erFinal" type="462c0819:PsiDirectoryNode" />
               <item name="Controlador" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="1erFinal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1erFinal" type="462c0819:PsiDirectoryNode" />
+              <item name="Datos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="1erFinal" type="b2602c69:ProjectViewProjectNode" />
@@ -301,7 +351,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298193" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -345,7 +395,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -474,6 +524,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -481,6 +534,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" selection-start-line="3" selection-end-line="4" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -498,6 +554,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" selection-start-line="2" selection-end-line="3" />
+          <folding>
+            <element signature="e#24#58#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -512,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -581,6 +637,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#24#58#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -616,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Clases/Persona.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Clases/Repuesto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2214">
@@ -644,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Datos/Bd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Clases/Solicitud.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -658,65 +703,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.5/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Clases/Negocio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+        <state relative-caret-position="237">
+          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
           <folding>
             <element signature="e#25#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_equipos.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Run/App.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" selection-start-line="2" selection-end-line="3" />
+        <state relative-caret-position="144">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#24#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_empleados.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Datos/Bd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Run/AppTk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="108">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
           <folding>
             <element signature="e#25#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vistas/Vistas.py">
+    <entry file="file:///usr/lib/python3.5/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        <state relative-caret-position="93">
+          <caret line="1133" selection-start-line="1133" selection-end-line="1133" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controlador/Util.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="122" selection-start-line="122" selection-end-line="122" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Clases/Usuario.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InicializarDatos/ScriptCargaDatos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_repuestos.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="3" selection-start-line="3" selection-end-line="4" />
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controlador/VistaUtil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-864">
-          <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+        <state relative-caret-position="-1764">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_solicitudes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="90" column="24" lean-forward="true" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vistas/Vistas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="110" column="17" lean-forward="true" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Clases/Persona.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_clientes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="121" column="50" lean-forward="true" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
           </folding>

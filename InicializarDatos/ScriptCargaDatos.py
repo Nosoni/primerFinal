@@ -2,6 +2,7 @@ from Clases.Persona import *
 from Clases.Solicitud import *
 from Clases.Repuesto import *
 from Clases.Equipo import *
+from Clases.Usuario import *
 from pickle import dump
 import inspect
 
@@ -69,4 +70,10 @@ def inicializar_datos():
                                     Equipo(5, "monitor", "Acer", "16``", "LCD", "No enciende"), 15000, "concluido"))
     f = abrir(path + "solicitudes", "wb")
     dump(bd.solicitudes, f)
+    f.close()
+
+    # User
+    bd.usuarios.append(Usuario("frecalde", "a"))
+    f = abrir(path + "usuarios", "wb")
+    dump(bd.usuarios, f)
     f.close()

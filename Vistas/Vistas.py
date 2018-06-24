@@ -2,6 +2,11 @@
 from tkinter import *
 from Controlador.VistaUtil import *
 from Controlador.Util import *
+from ABM.abm_clientes import *
+from ABM.abm_empleados import *
+from ABM.abm_repuestos import *
+from ABM.abm_solicitudes import *
+from Controlador.Util import encontrar_valor
 bgC = "black"
 p_pri = "700x400+150+100"
 p_sec = "500x300+250+180"
@@ -18,6 +23,7 @@ class PanelPrincipal(Frame):
     def __init__(self, panel_master):
         Frame.__init__(self, panel_master)
         self.__panel_master = panel_master
+        self.__vista_actual = PanelLogin(panel_master)
         self.inicializar()
         self.pack()
 
@@ -73,13 +79,168 @@ class PanelPrincipal(Frame):
 
         #Menú Ayuda
         menu_ayuda = Menu(menubar, tearoff=0)
-        menu_ayuda.add_command(label="Cargar Datos", command=self.script_cagar_datos)
         menu_ayuda.add_command(label="Acerca del sistema", command=self.info)
         menubar.add_cascade(label="Ayuda", menu=menu_ayuda)
 
         #Salir
-        menubar.add_command(label="Salir", command=self.salir)
+        menu_opciones = Menu(menubar, tearoff=0)
+        menu_opciones.add_command(label="Cerrar Sesión", command=self.cerrar_sesion)
+        menu_opciones.add_command(label="Salir", command=self.salir)
+        menubar.add_cascade(label="Opciones", menu=menu_opciones)
 
-    def fin(self):
+    def cerrar_sesion(self):
+        self.limpiar()
+        self.__vista_actual = PanelLogin(self.__panel_master)
+
+    def salir(self):
         guardar_datos()
         exit()
+
+    def limpiar(self):
+        if self.__vista_actual:
+            self.__vista_actual.destroy()
+
+    def accion(self):
+        messagebox.showinfo("Info", "No implementado")
+
+    def info(self):
+        messagebox.showinfo("Informacion", "Versión del sistema 0.1")
+
+    def add_cliente(self):
+        self.limpiar()
+        form = AddCliente(self.__panel_master)
+        self.__vista_actual = form
+
+    def del_cliente(self):
+        self.limpiar()
+        form = DelCliente(self.__panel_master)
+        self.__vista_actual = form
+
+    def list_cliente(self):
+        pass
+
+    def list_cliente_det(self):
+        pass
+
+    def add_empleado(self):
+        self.limpiar()
+        form = AddEmpleado(self.__panel_master)
+        self.__vista_actual = form
+
+    def del_empleado(self):
+        self.limpiar()
+        form = DelEmpleado(self.__panel_master)
+        self.__vista_actual = form
+
+    def list_empleado(self):
+        pass
+
+    def edit_salario(self):
+        pass
+
+    def add_repuesto(self):
+        self.limpiar()
+        form = AddRepuesto(self.__panel_master)
+        self.__vista_actual = form
+
+    def del_repuesto(self):
+        self.limpiar()
+        form = DelRepuesto(self.__panel_master)
+        self.__vista_actual = form
+
+    def list_repuesto(self):
+        pass
+
+    def add_equipo(self):
+        self.limpiar()
+        #form = AddEquipo(self.__panel_master)
+        #self.__vista_actual = form
+
+    def del_equipo(self):
+        self.limpiar()
+        #form = DelEquipo(self.__panel_master)
+        #self.__vista_actual = form
+
+    def list_equipo(self):
+        pass
+
+    def add_soli(self):
+        self.limpiar()
+        form = AddSoli(self.__panel_master)
+        self.__vista_actual = form
+
+    def act_soli(self):
+        self.limpiar()
+        form = ActSoli(self.__panel_master)
+        self.__vista_actual = form
+
+    def del_soli(self):
+        self.limpiar()
+        form = DelSoli(self.__panel_master)
+        self.__vista_actual = form
+
+    def list_soli(self):
+        pass
+
+    def baja_soli(self):
+        self.limpiar()
+        form = BajaSoli(self.__panel_master)
+        self.__vista_actual = form
+
+    def list_bajas(self):
+        pass
+
+
+class PanelLogin(PanedWindow):
+    """Panel de login"""
+    user = None
+    password = None
+
+    def __init__(self, panel_master):
+        PanedWindow.__init__(self, master=panel_master)
+        self.__panel_master = panel_master
+        self.inicializar()
+        self.pack()
+        self.grab_set()  # deshabilita las otras ventanas hasta que esta se destruya
+
+    def inicializar(self):
+        self.__panel_master.geometry(p_pri)
+        self.__panel_master.title("MENU Login")
+        self.__panel_master.protocol("WM_DELETE_WINDOW", "onexit")
+        self.__panel_master.resizable(0, 0)
+        self.__panel_master.config(bg=bgC)
+        Label(self, text="Usuario").grid(row=1, column=1)
+        Label(self, text="Contraseña: ").grid(row=2, column=1)
+        Button(self, text="Login", command=self.login).grid(row=3, column=2)
+
+        self.get_user()
+        self.get_password()
+
+    def get_user(self):
+        if not self.user:
+            self.user = Entry(master=self, textvariable=StringVar())
+            self.user.grid(row=1, column=2)
+            return self.user
+
+    def get_password(self):
+        if not self.password:
+            self.password = Entry(master=self, textvariable=StringVar(), show="•")
+            self.password.grid(row=2, column=2)
+        return self.password
+
+    def login(self):
+        val = encontrar_valor(bd.usuarios, "user", self.user.get())
+        if val is not None:
+            if val.activo:
+                if val.password is not None:
+                    if val.password == self.password.get():
+                        messagebox.showinfo("", "Login exitoso.")
+                        self.destroy()
+                    else:
+                        messagebox.showwarning("Atención", "Datos incorrectos")
+                else:
+                    messagebox.showwarning("Atención", "No es posible verificar usuario")
+            else:
+                messagebox.showwarning("Atención", "Usuario Inactivo")
+        else:
+            messagebox.showwarning("Atención", "No existe usuario")

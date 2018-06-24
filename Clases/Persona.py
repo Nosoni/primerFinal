@@ -149,7 +149,7 @@ class Cliente(Persona):
     def mostrar_datos_det(self):
         # Muestra los datos del Cliente detallada
         Persona.mostrar_datos_det(self)
-        if self.ruc is not '':
+        if self.ruc is not "":
             print(str(self.ruc))
         else:
             print("Sin Ruc.")
