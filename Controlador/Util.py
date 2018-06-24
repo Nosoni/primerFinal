@@ -170,5 +170,6 @@ def cargar_datos():
 def print_objeto(objeto):
     objeto = vars(objeto)
     for dato in objeto:
-        if objeto[dato] != [None]:
+        if objeto[dato] is not None and objeto[dato] != [None] and objeto[dato] != "":
+            #if type(rep) is Memoria:
             print(dato[0].upper() + dato[1:] + ":", objeto[dato])

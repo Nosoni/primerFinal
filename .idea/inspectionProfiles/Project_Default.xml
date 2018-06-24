@@ -6,6 +6,7 @@
         <list>
           <option value="tuple.append" />
           <option value="list.append" />
+          <option value="str.ClassType" />
         </list>
       </option>
     </inspection_tool>

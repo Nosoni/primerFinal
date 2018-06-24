@@ -84,7 +84,7 @@ class Negocio(Empresa):
             print("\nSin datos.")
             return input("Presione enter para volver al menu..")
         """retornará la solicitud que desea actualizar"""
-        soli = encontrar_valor(bd.solicitudes, input_alpha_r("Ingrese nro de Solicitud: "))
+        soli = encontrar_valor(bd.solicitudes, "solicitud_numero", input_alpha_r("Ingrese nro de Solicitud: "))
         try:
             print()
             soli.mostrar_datos()
@@ -93,7 +93,7 @@ class Negocio(Empresa):
             while resp_add == "si":
                 resp_add_nuevo = input_opcion("Existe el equipo?", ("si", "no"))
                 if resp_add_nuevo == "si":
-                    equi = encontrar_valor(bd.equipos, input_alpha_r("Ingrese nro de Equipo: "))
+                    equi = encontrar_valor(bd.equipos, "cod", input_alpha_r("Ingrese nro de Equipo: "))
                 else:
                     equi = Equipo(**Equipo.prompt_init())
                 soli.add_equipo(equi)
@@ -105,7 +105,7 @@ class Negocio(Empresa):
     def baja_solicitud(self):
         """Elimina una solicitud que se desea retirar, pero calcula el valor
         total para repasar a facturacion"""
-        soli = encontrar_valor(bd.solicitudes, input_alpha_r("Ingrese nro de Solicitud: "))
+        soli = encontrar_valor(bd.solicitudes, "solicitud_numero", input_alpha_r("Ingrese nro de Solicitud: "))
         soli.mostrar_datos()
         resp = input_opcion("Desea dar de baja la solicitud?", ("si", "no"))
         if resp == "si":

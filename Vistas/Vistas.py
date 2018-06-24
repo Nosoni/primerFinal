@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tkinter import *
-from Vistas.util import *
+from Controlador.VistaUtil import *
 from Controlador.Util import *
 bgC = "black"
 p_pri = "700x400+150+100"
