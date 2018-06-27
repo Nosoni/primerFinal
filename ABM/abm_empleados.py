@@ -4,7 +4,8 @@ from tkinter import messagebox
 import Datos.Bd as bd
 from Clases.Persona import Empleado
 from Clases.Contacto import Contacto
-from datetime import datetime
+from Controlador.Util import encontrar_valor
+from Controlador.VistaUtil import del_datos
 
 
 class AddEmpleado(PanedWindow):
@@ -14,11 +15,10 @@ class AddEmpleado(PanedWindow):
     nombre_entry = None
     apellido_entry = None
     direccion_entry = None
-    tel_entry = None
     cel_entry = None
     email_entry = None
-    tecnico_entry = None
-    sueldo_entry = None
+    red_social_entry = None
+    salario_entry = None
 
     def __init__(self, panel_master):
         PanedWindow.__init__(self, master=panel_master)
@@ -27,29 +27,26 @@ class AddEmpleado(PanedWindow):
         self.pack()
 
     def inicializar(self):
-        Label(self, text="Ingrese datos de la solicitud", ).grid(
-            row=1, column=2)
-        Label(self, text="Cedula*: ").grid(row=2, column=1)
+        Label(self, text="Ingrese datos del Empleado").grid(row=1, column=2)
+        Label(self, text="Cédula*: ").grid(row=2, column=1)
         Label(self, text="Nombre*: ").grid(row=3, column=1)
         Label(self, text="Apellido*: ").grid(row=4, column=1)
-        Label(self, text="Direccion: ").grid(row=5, column=1)
-        Label(self, text="Contactos*: ").grid(row=7, column=1)
-        Label(self, text="tel.: ").grid(row=6, column=2)
-        Label(self, text="cel.: ").grid(row=7, column=2)
-        Label(self, text="email: ").grid(row=8, column=2)
-        Label(self, text="Tecnico*: ").grid(row=9, column=1)
-        Label(self, text="Sueldo: ").grid(row=10, column=1)
-        Button(self, text="GUARDAR", command=self.a_emp).grid(row=11, column=3)
+        Label(self, text="Dirección: ").grid(row=5, column=1)
+        Label(self, text="Contactos: ").grid(row=7, column=1)
+        Label(self, text="Celular: ").grid(row=6, column=2)
+        Label(self, text="Email: ").grid(row=7, column=2)
+        Label(self, text="Red Social: ").grid(row=8, column=2)
+        Label(self, text="Sueldo*: ").grid(row=9, column=1)
+        Button(self, text="GUARDAR", command=self.a_emp).grid(row=10, column=3)
 
         self.get_cedula_entry()
         self.get_nombre_entry()
         self.get_apellido_entry()
         self.get_direccion_entry()
-        self.get_tel_entry()
         self.get_cel_entry()
         self.get_email_entry()
-        self.get_tecnico_entry()
-        self.get_sueldo_entry()
+        self.get_red_social_entry()
+        self.get_salario_entry()
 
     def get_cedula_entry(self):
         if not self.cedula_entry:
@@ -75,44 +72,33 @@ class AddEmpleado(PanedWindow):
             self.direccion_entry.grid(row=5, column=2)
         return self.direccion_entry
 
-    def get_tel_entry(self):
-        if not self.tel_entry:
-            self.tel_entry = Entry(master=self, width=20)
-            self.tel_entry.grid(row=6, column=3)
-        return self.tel_entry
-
     def get_cel_entry(self):
         if not self.cel_entry:
             self.cel_entry = Entry(master=self, width=20)
-            self.cel_entry.grid(row=7, column=3)
+            self.cel_entry.grid(row=6, column=3)
         return self.cel_entry
 
     def get_email_entry(self):
         if not self.email_entry:
             self.email_entry = Entry(master=self, width=20)
-            self.email_entry.grid(row=8, column=3)
+            self.email_entry.grid(row=7, column=3)
         return self.email_entry
 
-    def get_tecnico_entry(self):
-        if not self.tecnico_entry:
-            self.tecnico = StringVar()
-            self.tecnico_entry = Radiobutton(self, text="Si", value="si",
-                variable=self.tecnico)
-            self.tecnico_entry.grid(row=9, column=2)
-            self.tecnico_entry = Radiobutton(self, text="No", value="no",
-                variable=self.tecnico)
-            self.tecnico_entry.grid(row=9, column=3)
-        return self.tecnico
+    def get_red_social_entry(self):
+        if not self.red_social_entry:
+            self.red_social_entry = Entry(master=self, width=20)
+            self.red_social_entry.grid(row=8, column=3)
+        return self.red_social_entry
 
-    def get_sueldo_entry(self):
-        if not self.sueldo_entry:
-            self.sueldo_entry = Entry(master=self, width=20)
-            self.sueldo_entry.grid(row=10, column=2)
-        return self.sueldo_entry
+    def get_salario_entry(self):
+        if not self.salario_entry:
+            self.salario_entry = Entry(master=self, width=20)
+            self.salario_entry.grid(row=9, column=2)
+        return self.salario_entry
 
-    def val_emp(self, tec, sue, ced, nom, ape, dre):
+    def val_emp(self, ced, nom, ape, salario):
         val = False
-        if (tec != "" and (sue.isdigit() or sue == "") and ced.isdigit() and
+        if ((salario.isdigit() or salario != "") and ced != "" and
         nom != "" and ape != ""):
             val = True
         else:
@@ -120,9 +106,9 @@ class AddEmpleado(PanedWindow):
                 "empleado")
         return val
 
-    def val_cont(self, tel, cel, mail):
+    def val_cont(self, cel, mail, red):
         val = False
-        if tel != "" or cel != "" or mail != "":
+        if cel != "" or mail != "" or red != "":
             val = True
         else:
             messagebox.showinfo("", "Ingrese por lo menos 1 contacto")
@@ -130,33 +116,30 @@ class AddEmpleado(PanedWindow):
 
     def a_emp(self):
         try:
-            tel = self.get_tel_entry().get()
             cel = self.get_cel_entry().get()
             mail = self.get_email_entry().get()
-            tec = self.get_tecnico_entry().get()
-            sue = self.get_sueldo_entry().get()
+            red_social = self.get_red_social_entry().get()
+            salario = self.get_salario_entry().get()
             ced = self.get_cedula_entry().get()
             nom = self.get_nombre_entry().get()
             ape = self.get_apellido_entry().get()
             dre = self.get_direccion_entry().get()
 
-            if (self.val_emp(tec, sue, ced, nom, ape, dre) and
-            self.val_cont(tel, cel, mail)):
-                self.contacto = Contacto(tel, cel, mail)
-                bd.empleados.append(Empleado(**{
-                    "tecnico": tec, "fecha_ini": datetime.now(),
-                    "sueldo": sue, "cedula": ced, "nombre": nom,
+            if (self.val_emp(ced, nom, ape, salario) and
+            self.val_cont(cel, mail, red_social)):
+                self.contacto = Contacto(cel, mail, red_social)
+                bd.empleados.append(Empleado(**{"cedula": ced, "nombre": nom,
                     "apellido": ape, "direccion": dre,
-                    "contacto": self.contacto}))
+                    "contacto": self.contacto, "salario": salario}))
                 messagebox.showinfo("Informacion", "Empleado agregado")
                 self.destroy()
         except Exception as e:
-            messagebox.showerror('Error', e)
+            messagebox.showerror("Error", e)
 
 
 class DelEmpleado(PanedWindow):
     """Panel que contien los campos para eliminar un empleado"""
-    soli_entry = None
+    cedula_entry = None
 
     def __init__(self, panel_master):
         PanedWindow.__init__(self, master=panel_master)
@@ -166,24 +149,97 @@ class DelEmpleado(PanedWindow):
 
     def inicializar(self):
         Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
-        Label(self, text="Ingrese numero de empleado*: ").grid(row=2, column=1)
+        Label(self, text="Ingrese cédula del empleado*: ").grid(row=2, column=1)
         Button(self, text="Eliminar", command=self.eliminar).grid(
             row=3, column=1)
 
-        self.get_soli_entry()
+        self.get_cedula_entry()
 
-    def get_soli_entry(self):
-        if not self.soli_entry:
-            self.soli_entry = Entry(master=self, width=20)
-            self.soli_entry.grid(row=2, column=2)
-        return self.soli_entry
+    def get_cedula_entry(self):
+        if not self.cedula_entry:
+            self.cedula_entry = Entry(master=self, width=20)
+            self.cedula_entry.grid(row=2, column=2)
+        return self.cedula_entry
 
     def eliminar(self):
         try:
-            pos = int(self.get_soli_entry().get())
-            if(messagebox.askyesno("Eliminar", "Eliminar empleado?")):
-                bd.empleados.pop(pos - 1)
-                messagebox.showinfo("Eliminado", "Empleado eliminado")
-                self.destroy()
+            if messagebox.askyesno("Eliminar", "Eliminar empleado?"):
+                val = encontrar_valor(bd.empleados, "cedula", self.get_cedula_entry().get())
+                if val is not None:
+                    if del_datos(bd.empleados, val):
+                        messagebox.showinfo("Eliminado", "Empleado eliminado")
+                        self.destroy()
+                    else:
+                        messagebox.showinfo("Atención", "Ocurrió un error al eliminar dato.")
+                        self.destroy()
+                else:
+                    messagebox.showwarning("Atención", "No existe Empleado.")
         except:
-            messagebox.showerror("Infor", "No existe empleado")
+            messagebox.showerror("Error", "Ocurrió un error inesperado al elimnar el empleado.")
+
+
+class EditSalarioEmpleado(PanedWindow):
+    """Panel que contien los campos para editar un empleado"""
+    cedula_entry = None
+    salario_entry = None
+
+    def __init__(self, panel_master):
+        PanedWindow.__init__(self, master=panel_master)
+        self.__panel_master = panel_master
+        self.inicializar()
+        self.pack()
+
+    def inicializar(self):
+        Label(self, text="Ingrese dato requiero del Empleado a editar", ).grid(row=1, column=2)
+        Label(self, text="Ingrese cédula del empleado*: ").grid(row=2, column=1)
+        Label(self, text="Nuevo salario*: ").grid(row=3, column=1)
+        Button(self, text="Guardar", command=self.edit_salario).grid(
+            row=4, column=2)
+
+        self.get_cedula_entry()
+        self.get_salario_entry()
+
+    def get_cedula_entry(self):
+        if not self.cedula_entry:
+            self.cedula_entry = Entry(master=self, width=20)
+            self.cedula_entry.grid(row=2, column=2)
+        return self.cedula_entry
+
+    def get_salario_entry(self):
+        if not self.salario_entry:
+            self.salario_entry = Entry(master=self, width=20)
+            self.salario_entry.grid(row=3, column=2)
+            self.salario_entry.grid(row=3, column=2)
+        return self.salario_entry
+
+    def edit_salario(self):
+        try:
+            if self.val_cedula(self.get_cedula_entry().get()):
+                if messagebox.askyesno("Eliminar", "Eliminar empleado?"):
+                    val = encontrar_valor(bd.empleados, "cedula", self.get_cedula_entry().get())
+                    if val is not None:
+                        if self.val_salario(self.get_salario_entry().get()):
+                            val.salario = self.get_salario_entry().get()
+                            messagebox.showinfo("Editado", "Editado con éxito.")
+                            self.destroy()
+                        else:
+                            messagebox.showinfo("Editado", "Ingrese el salario.")
+                    else:
+                        messagebox.showwarning("Atención", "No existe Empleado.")
+                        self.destroy()
+            else:
+                messagebox.showwarning("Atención", "Ingrese nro. de cédula.")
+        except:
+            messagebox.showerror("Error", "Ocurrió un error inesperado al elimnar el empleado.")
+
+    def val_salario(self, salario):
+        val = False
+        if salario != "":
+            val = True
+        return val
+
+    def val_cedula(self, cedula):
+        val = False
+        if cedula != "":
+            val = True
+        return val

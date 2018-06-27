@@ -32,7 +32,7 @@ class AddCliente(PanedWindow):
         Label(self, text="Nombre*: ").grid(row=3, column=1)
         Label(self, text="Apellido*: ").grid(row=4, column=1)
         Label(self, text="Dirección: ").grid(row=5, column=1)
-        Label(self, text="Contactos*: ").grid(row=7, column=1)
+        Label(self, text="Contactos: ").grid(row=7, column=1)
         Label(self, text="Celular: ").grid(row=6, column=2)
         Label(self, text="Email: ").grid(row=7, column=2)
         Label(self, text="Red Social: ").grid(row=8, column=2)
@@ -75,19 +75,19 @@ class AddCliente(PanedWindow):
     def get_cel_entry(self):
         if not self.cel_entry:
             self.cel_entry = Entry(master=self, width=20)
-            self.cel_entry.grid(row=7, column=3)
+            self.cel_entry.grid(row=6, column=3)
         return self.cel_entry
 
     def get_email_entry(self):
         if not self.email_entry:
             self.email_entry = Entry(master=self, width=20)
-            self.email_entry.grid(row=8, column=3)
+            self.email_entry.grid(row=7, column=3)
         return self.email_entry
 
     def get_red_social_entry(self):
         if not self.red_social_entry:
             self.red_social_entry = Entry(master=self, width=20)
-            self.red_social_entry.grid(row=6, column=3)
+            self.red_social_entry.grid(row=8, column=3)
         return self.red_social_entry
 
     def get_ruc_entry(self):

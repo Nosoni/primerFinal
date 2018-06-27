@@ -57,18 +57,30 @@ class AddContacto(PanedWindow):
 
     def crear_contacto(self):
         try:
-            if messagebox.askyesno("Editar", "Desea editar dicho Cliente?"):
-                val = encontrar_valor(bd.clientes, "cedula", self.get_cedula_entry().get())
-                if val is not None:
-                    red_social = self.get_red_social_entry().get()
-                    cel = self.get_tel_entry().get()
-                    mail = self.get_email_entry().get()
-                    a = Contacto(cel, mail, red_social)
-                    val.contactos.append(a)
-                    messagebox.showinfo("Editado", "Editado con éxito.")
-                    self.destroy()
-                else:
-                    messagebox.showwarning("Atención", "No existe Cliente.")
-                    self.destroy()
+            if self.val_cont(self.get_tel_entry().get(), self.get_email_entry().get(), self.get_red_social_entry().get()):
+                if messagebox.askyesno("Editar", "Desea editar dicho Cliente?"):
+                    val = encontrar_valor(bd.clientes, "cedula", self.get_cedula_entry().get())
+                    if val is not None:
+                        red_social = self.get_red_social_entry().get()
+                        cel = self.get_tel_entry().get()
+                        mail = self.get_email_entry().get()
+                        a = Contacto(cel, mail, red_social)
+                        val.contactos.append(a)
+                        messagebox.showinfo("Editado", "Editado con éxito.")
+                        self.destroy()
+                    else:
+                        messagebox.showwarning("Atención", "No existe Cliente.")
+                        self.destroy()
+            else:
+                messagebox.showinfo("", "Ingrese por lo menos 1 contacto")
         except:
             messagebox.showerror("Error", "Ocurrió un error inesperado al elimnar el cliente.")
+
+    def val_cont(self, tel, email, red):
+        val = False
+        if tel != "" or email != "" or red != "":
+            val = True
+        return val
+
+    def val_cedula(self):
+        pass

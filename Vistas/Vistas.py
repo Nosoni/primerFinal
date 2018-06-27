@@ -43,7 +43,7 @@ class PanelPrincipal(Frame):
         menu_cliente.add_command(label="Eliminar cliente", command=self.del_cliente)
         menu_cliente.add_command(label="Listar clientes", command=self.list_cliente)
         menu_cliente.add_command(label="Listar clientes detallado", command=self.list_cliente_det)
-        menu_cliente.add_command(label="Editar cliente", command=self.edit_cliente)
+        menu_cliente.add_command(label="Agregar contacto a cliente", command=self.edit_cliente)
         menubar.add_cascade(label="Clientes", menu=menu_cliente)
 
         #Menú Empleado
@@ -63,10 +63,10 @@ class PanelPrincipal(Frame):
 
         # Menú Equipos
         menu_equipos = Menu(menubar, tearoff=0)
-        menu_equipos.add_command(label="Agregar repuesto", command=self.add_equipo)
-        menu_equipos.add_command(label="Eliminar repuesto", command=self.del_equipo)
-        menu_equipos.add_command(label="Listar repuesto", command=self.list_equipo)
-        menubar.add_cascade(label="Repuestos", menu=menu_equipos)
+        menu_equipos.add_command(label="Agregar equipo", command=self.add_equipo)
+        menu_equipos.add_command(label="Eliminar equipo", command=self.del_equipo)
+        menu_equipos.add_command(label="Listar equipo", command=self.list_equipo)
+        menubar.add_cascade(label="Equipos", menu=menu_equipos)
 
         #Menú Solicitud
         menu_soli = Menu(menubar, tearoff=0)
@@ -143,7 +143,9 @@ class PanelPrincipal(Frame):
         pass
 
     def edit_salario(self):
-        pass
+        self.limpiar()
+        form = EditSalarioEmpleado(self.__panel_master)
+        self.__vista_actual = form
 
     def add_repuesto(self):
         self.limpiar()
