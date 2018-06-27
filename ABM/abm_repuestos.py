@@ -189,7 +189,7 @@ class DelRepuesto(PanedWindow):
 
     def inicializar(self):
         Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
-        Label(self, text="Ingrese num de repuesto*: ").grid(row=2, column=1)
+        Label(self, text="Ingrese código de repuesto*: ").grid(row=2, column=1)
         Button(self, text="Eliminar", command=self.eliminar).grid(
             row=3, column=1)
 

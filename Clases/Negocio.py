@@ -150,7 +150,7 @@ class Negocio(Empresa):
         else:
             print("No se encontró el dato a eliminar.")
 
-    def listar_equipos(self):
+    def list_equipo(self):
         self.listar_datos(bd.equipos)
 
     # ________________________________Menu___Repuesto_______________________________
@@ -170,7 +170,7 @@ class Negocio(Empresa):
         else:
             print("No se encontró el dato a eliminar.")
 
-    def listar_repuestos(self):
+    def list_repuesto(self):
         self.listar_datos(bd.repuestos)
 
     # ______________________________Funciones_______________________________________
@@ -298,13 +298,13 @@ class Negocio(Empresa):
     o_equipos = {}
     o_equipos[1] = {"t": "Agregar equipo", "f": add_equipo}
     o_equipos[2] = {"t": "Eliminar equipo", "f": del_equipo}
-    o_equipos[3] = {"t": "Listar equipos", "f": listar_equipos}
+    o_equipos[3] = {"t": "Listar equipos", "f": list_equipo}
     o_equipos[4] = {"t": "Volver", "f": menu}
 
     o_repuestos = {}
     o_repuestos[1] = {"t": "Agregar repuesto", "f": add_repuesto}
     o_repuestos[2] = {"t": "Eliminar repuesto", "f": del_repuesto}
-    o_repuestos[3] = {"t": "Listar repuestos", "f": listar_repuestos}
+    o_repuestos[3] = {"t": "Listar repuestos", "f": list_repuesto}
     o_repuestos[4] = {"t": "Volver", "f": menu}
 
     o_principal = {}

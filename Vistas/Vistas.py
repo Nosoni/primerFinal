@@ -7,6 +7,7 @@ from ABM.abm_empleados import *
 from ABM.abm_repuestos import *
 from ABM.abm_solicitudes import *
 from ABM.abm_contactos import *
+from ABM.abm_equipos import *
 from Controlador.Util import encontrar_valor
 bgC = "black"
 p_pri = "700x400+150+100"
@@ -162,13 +163,13 @@ class PanelPrincipal(Frame):
 
     def add_equipo(self):
         self.limpiar()
-        #form = AddEquipo(self.__panel_master)
-        #self.__vista_actual = form
+        form = AddEquipo(self.__panel_master)
+        self.__vista_actual = form
 
     def del_equipo(self):
         self.limpiar()
-        #form = DelEquipo(self.__panel_master)
-        #self.__vista_actual = form
+        form = DelEquipo(self.__panel_master)
+        self.__vista_actual = form
 
     def list_equipo(self):
         pass

@@ -19,7 +19,7 @@ class Equipo():
         self.repuestos = []
         self.repuestos.append(repuesto)
 
-    def add_repuesto(self, rep):
+    def add_repuesto(self):
         """Comprueba si el repuesto que se quiere anhadir es instancia de la
         clase repuesto"""
         try:
