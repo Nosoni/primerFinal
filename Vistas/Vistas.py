@@ -6,6 +6,7 @@ from ABM.abm_clientes import *
 from ABM.abm_empleados import *
 from ABM.abm_repuestos import *
 from ABM.abm_solicitudes import *
+from ABM.abm_contactos import *
 from Controlador.Util import encontrar_valor
 bgC = "black"
 p_pri = "700x400+150+100"
@@ -42,6 +43,7 @@ class PanelPrincipal(Frame):
         menu_cliente.add_command(label="Eliminar cliente", command=self.del_cliente)
         menu_cliente.add_command(label="Listar clientes", command=self.list_cliente)
         menu_cliente.add_command(label="Listar clientes detallado", command=self.list_cliente_det)
+        menu_cliente.add_command(label="Editar cliente", command=self.edit_cliente)
         menubar.add_cascade(label="Clientes", menu=menu_cliente)
 
         #Menú Empleado
@@ -121,6 +123,11 @@ class PanelPrincipal(Frame):
 
     def list_cliente_det(self):
         pass
+
+    def edit_cliente(self):
+        self.limpiar()
+        form = AddContacto(self.__panel_master)
+        self.__vista_actual = form
 
     def add_empleado(self):
         self.limpiar()

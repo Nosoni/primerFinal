@@ -167,3 +167,11 @@ def list_repuesto():
         datos.append("")
         bucle += 1
     list_datos(datos)
+
+def del_datos(lista, dato):
+    """Permite eliminar un objeto"""
+    if lista:
+        lista.remove(dato)
+        return True
+    else:
+        return False

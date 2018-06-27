@@ -12,7 +12,7 @@ def inicializar_datos():
     path = "/home/franco/PycharmProjects/1erFinal/Datos/"
 
     # Clientes
-    a = Cliente(1, "Ariel", "Curtido", "Asunción")
+    a = Cliente(3828622, "Ariel", "Curtido", "Asunción")
     bd.clientes.append(a)
     bd.clientes.append(Cliente(2, "César", "Rolon", "Capiatá"))
     bd.clientes.append(Cliente(3, "Tamara", "Ocampos", "Fdo. de la Mora", None, "111111111-1"))
