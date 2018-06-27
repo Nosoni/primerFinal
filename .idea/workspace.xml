@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42605b58-f925-4d33-be36-e85ae8a3b9bc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Script Haskell/ProgramacionFuncional.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ABM/abm_solicitudes.py" beforeDir="false" afterPath="$PROJECT_DIR$/ABM/abm_solicitudes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clases/Solicitud.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clases/Solicitud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datos/clientes" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/clientes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datos/empleados" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/empleados" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datos/equipos" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/equipos" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datos/repuestos" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/repuestos" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Datos/solicitudes" beforeDir="false" afterPath="$PROJECT_DIR$/Datos/solicitudes" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +28,8 @@
       <file leaf-file-name="Solicitud.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Clases/Solicitud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="162">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -45,14 +37,12 @@
       <file leaf-file-name="abm_solicitudes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ABM/abm_solicitudes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="213" column="50" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
+            <state relative-caret-position="230">
+              <caret line="295" column="22" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="22" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
                 <element signature="e#4692#6117#0" />
                 <element signature="e#3741#4437#0" />
-                <element signature="e#9365#10536#0" />
-                <element signature="e#10572#13013#0" />
               </folding>
             </state>
           </provider>
@@ -82,8 +72,8 @@
       <file leaf-file-name="abm_clientes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ABM/abm_clientes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2466">
-              <caret line="137" column="18" lean-forward="true" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="18" />
+            <state relative-caret-position="910">
+              <caret line="179" lean-forward="true" selection-start-line="140" selection-end-line="179" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
               </folding>
@@ -188,10 +178,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1578" />
+    <option name="x" value="65" />
     <option name="y" value="-4" />
-    <option name="width" value="1299" />
-    <option name="height" value="764" />
+    <option name="width" value="1301" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -322,8 +312,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1431" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980783" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -331,7 +320,7 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.34186748" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.12048193" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.12048193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298193" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -878,16 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ABM/abm_clientes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2466">
-          <caret line="137" column="18" lean-forward="true" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="18" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Script Haskell/ProgramacionFuncional.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -895,23 +874,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ABM/abm_clientes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="179" lean-forward="true" selection-start-line="140" selection-end-line="179" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Clases/Solicitud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="162">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ABM/abm_solicitudes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="213" column="50" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
+        <state relative-caret-position="230">
+          <caret line="295" column="22" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="22" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
             <element signature="e#4692#6117#0" />
             <element signature="e#3741#4437#0" />
-            <element signature="e#9365#10536#0" />
-            <element signature="e#10572#13013#0" />
           </folding>
         </state>
       </provider>

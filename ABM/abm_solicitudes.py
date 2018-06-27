@@ -138,7 +138,6 @@ class ActSoli(PanedWindow):
     soli_entry = None
     presupuesto_entry = None
     equipo_entry = None
-    estado_entry = None
 
     def __init__(self, panel_master):
         PanedWindow.__init__(self, master=panel_master)
@@ -152,7 +151,6 @@ class ActSoli(PanedWindow):
         Label(self, text="Ingrese numero de solicitud*: ").grid(row=2, column=1)
         Label(self, text="Actualizar Presupuesto: ").grid(row=3, column=1)
         Label(self, text="Agregar equipo: ").grid(row=4, column=1)
-        Label(self, text="Actualizar estado: ").grid(row=5, column=1)
         Button(self, text="Add Equi", command=self.a_equi).grid(
             row=4, column=3)
         Button(self, text="GUARDAR", command=self.a_sol).grid(
@@ -161,7 +159,6 @@ class ActSoli(PanedWindow):
         self.get_soli_entry()
         self.get_presupuesto_entry()
         self.get_equipo_entry()
-        self.get_estado_entry()
 
     def get_soli_entry(self):
         if not self.soli_entry:
@@ -181,22 +178,13 @@ class ActSoli(PanedWindow):
             self.equipo_entry.grid(row=4, column=2)
         return self.equipo_entry
 
-    def get_estado_entry(self):
-        if not self.estado_entry:
-            self.estado_entry = Entry(master=self, width=20)
-            self.estado_entry.grid(row=5, column=2)
-        return self.estado_entry
-
     def a_equi(self):
         try:
             if self.get_equipo_entry().get() != "":
                 if messagebox.askyesno("Editar", "Desea agregar el equipo?"):
                     val = encontrar_valor(bd.equipos, "nro_equipo", self.get_equipo_entry().get())
-                    if val is not None:
-                        self.equipArray.append(val)
-                        messagebox.showinfo("Agregado", "Agregado con éxito.")
-                    else:
-                        messagebox.showwarning("Atención", "No existe repuesto.")
+                    self.equipArray.append(val)
+                    messagebox.showinfo("Agregado", "Agregado con éxito.")
             else:
                 messagebox.showwarning("Atención", "Ingrese el nro. del equipo.")
         except Exception as e:
@@ -208,19 +196,19 @@ class ActSoli(PanedWindow):
             if sol != "":
                 solicitud = encontrar_valor(bd.solicitudes, "solicitud_numero", sol)
                 if solicitud is not None:
-                    if self.get_presupuesto_entry().get() != "" and self.get_presupuesto_entry().get().isdigit():
+                    if self.get_presupuesto_entry().get() != "":
                         solicitud.presupuesto = self.get_presupuesto_entry().get()
-                    if self.equipArray is not None:
+                    if len(self.equipArray) > 0:
                         solicitud.equipos.append(self.equipArray)
-                    messagebox.showinfo("Informacion", "Solicitud agregada")
-
+                    messagebox.showinfo("Informacion", "Solicitud actualizado.")
+                    self.destroy()
+                else:
+                    messagebox.showinfo("Informacion", "Solicitud no encontrada.")
             else:
                 messagebox.showinfo("Atención", "Ingrese el nro de Solicitud.")
-
-
-            self.destroy()
         except Exception as e:
             messagebox.showerror("Error", e)
+
 
 class DelSoli(PanedWindow):
     """Panel que contien los campos para eliminar una solicitud"""
@@ -248,13 +236,19 @@ class DelSoli(PanedWindow):
 
     def eliminar(self):
         try:
-            pos = int(self.get_soli_entry().get())
-            if(messagebox.askyesno("Eliminar", "Eliminar solicitud?")):
-                bd.solicitudes.pop(pos - 1)
-                messagebox.showinfo("Eliminado", "Solicitud eliminada")
-                self.destroy()
+            if messagebox.askyesno("Eliminar", "Eliminar solicitud?"):
+                val = encontrar_valor(bd.solicitudes, "solicitud_numero", self.get_soli_entry().get())
+                if val is not None:
+                    if del_datos(bd.solicitudes, val):
+                        messagebox.showinfo("Eliminado", "Solicitud eliminada.")
+                        self.destroy()
+                    else:
+                        messagebox.showinfo("Atención", "Ocurrió un error al eliminar dato.")
+                        self.destroy()
+                else:
+                    messagebox.showwarning("Atención", "No existe solicitud.")
         except:
-            messagebox.showerror("Infor", "No existe solicitud")
+            messagebox.showerror("Error", "Ocurrió un error inesperado al elimnar la solicitud.")
 
 
 class BajaSoli(PanedWindow):
