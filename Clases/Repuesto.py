@@ -16,13 +16,6 @@ class Repuesto(metaclass=ABCMeta):
         self.precio = precio
         self.__class__.cant_repuesto += 1
 
-    def mostrar_datos(self, name_class):
-        print("\nDetalle " + name_class + "\n")
-        print("Código: " + str(self.cod))
-        print("Marca: " + self.marca)
-        print("Modelo: " + self.modelo)
-        print("Precio: " + str(self.precio))
-
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
@@ -43,10 +36,6 @@ class Disco(Repuesto):
         super().__init__(cod, marca, modelo, precio)
         self.capacidad = capacidad
         self.__class__.cant_disco += 1
-
-    def mostrar_datos(self):
-        super().mostrar_datos("Disco")
-        print("Capacidad: " + str(self.capacidad)) + "GB."  # asumimos que se manejará sólo en GB
 
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
@@ -71,10 +60,6 @@ class Cartucho(Repuesto):
         self.color = color
         self.__class__.cant_cartucho += 1
 
-    def mostrar_datos(self):
-        super().mostrar_datos("Cartucho")
-        print(("Color: " + str(self.color)))
-
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
@@ -97,10 +82,6 @@ class Memoria(Repuesto):
         self.capacidad = capacidad
         self.__class__.cant_memoria += 1
 
-    def mostrar_datos(self):
-        super().mostrar_datos("Memoria")
-        print(("Capacidad: " + str(self.capacidad)))
-
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""
@@ -122,10 +103,6 @@ class Otro(Repuesto):
         super().__init__(cod, marca, modelo, precio)
         self.tipo = tipo
         self.cant_otro += 1
-
-    def mostrar_datos(self):
-        super().mostrar_datos("otro")
-        print("Tipo: " + str(self.tipo))
 
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para

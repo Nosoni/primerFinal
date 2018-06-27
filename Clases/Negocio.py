@@ -87,7 +87,8 @@ class Negocio(Empresa):
         soli = encontrar_valor(bd.solicitudes, "solicitud_numero", input_alpha_r("Ingrese nro de Solicitud: "))
         try:
             print()
-            soli.mostrar_datos()
+            #soli.mostrar_datos()
+            print_objeto(soli)
             resp_add = input_opcion("Desea ingresar un nuevo equipo?", ("si", "no"))
             """si no existe el equipo que desea add a la solicitud, le permitira add"""
             while resp_add == "si":
@@ -106,7 +107,8 @@ class Negocio(Empresa):
         """Elimina una solicitud que se desea retirar, pero calcula el valor
         total para repasar a facturacion"""
         soli = encontrar_valor(bd.solicitudes, "solicitud_numero", input_alpha_r("Ingrese nro de Solicitud: "))
-        soli.mostrar_datos()
+        #soli.mostrar_datos()
+        print_objeto(soli)
         resp = input_opcion("Desea dar de baja la solicitud?", ("si", "no"))
         if resp == "si":
             print("\n----Detalles----")
@@ -192,8 +194,8 @@ class Negocio(Empresa):
             cont = 1
             for val in lista:
                 print(("-----------------=={}==-----------------".format(cont)))
-                print_objeto(val)
                 #val.mostrar_datos()
+                print_objeto(val)
                 print()
                 if (cont % 5) is 0:
                     if p:
@@ -212,7 +214,8 @@ class Negocio(Empresa):
             cont = 1
             for val in lista:
                 print(("-----------------=={}==-----------------".format(cont)))
-                val.mostrar_datos_det()
+                #val.mostrar_datos_det()
+                print_objeto(val)
                 print()
                 if (cont % 5) is 0:
                     if p:
@@ -311,8 +314,3 @@ class Negocio(Empresa):
     o_principal[4] = {"t": "Menú de Equipos", "f": menu_equipos}
     o_principal[5] = {"t": "Menú de Repuestos", "f": menu_repuestos}
     o_principal[6] = {"t": "Terminar ejecución", "f": fin}
-
-# editar salario
-# agregar repuesto a un equipo
-# add contacto
-# cancelar solicitud, jefe

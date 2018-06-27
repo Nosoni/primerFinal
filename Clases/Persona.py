@@ -15,30 +15,6 @@ class Persona(metaclass=ABCMeta):
         self.contactos = []
         self.contactos.append(contacto)
 
-    def mostrar_datos(self):
-        # Muestra los datos de una Persona
-        print("\nDetalles de la Persona\n")
-        print(("Cédula: " + str(self.cedula)))
-        print(("Nombre: " + str(self.nombre)))
-        print(("Apellido: " + str(self.apellido)))
-        print(("Dirección: " + str(self.direccion)))
-
-    def mostrar_datos_det(self):
-        # Muestra los datos de una Persona detallada
-        print("\nDetalles de la Persona\n")
-        print(("Cédula: " + str(self.cedula)))
-        print(("Nombre: " + str(self.nombre)))
-        print(("Apellido: " + str(self.apellido)))
-        print(("Dirección: " + str(self.direccion)))
-        print("Contacto/s: ")
-        if self.contactos:
-            # si existe contacto, mostrara los datos
-            for contacto in self.contactos:
-                if contacto is not None:
-                    contacto.mostrar_datos()
-        else:
-            print("No posee CONTACTOS")
-
     def add_contacto(self, contacto):
         # Agrega contactos a la Persona
         self.contactos.append(contacto)
@@ -73,26 +49,6 @@ class Empleado(Persona):
         super().__init__(cedula, nombre, apellido, direccion, contacto)
         self.salario = salario
         self.__class__.cant_empleado += 1
-
-    def mostrar_datos(self):
-        # Muestra los datos de una Persona, mas los datos de un Empleado
-        Persona.mostrar_datos(self)
-        print("\nDetalles del Empleado\n")
-        print("Salario: ")
-        if self.salario is not '':
-            print(str(self.salario))
-        else:
-            print("Sin salario.")
-
-    def mostrar_datos_det(self):
-        # Muestra los datos de una Persona det, mas los datos de un Empleado
-        Persona.mostrar_datos_det(self)
-        print("\nDetalles del Empleado\n")
-        print("Salario: ")
-        if self.salario is not '':
-            print(str(self.salario))
-        else:
-            print("Sin salario.")
 
     def actualizar_salario(self, salario):
         self.salario = salario
@@ -139,20 +95,6 @@ class Cliente(Persona):
                          contacto)
         self.ruc = ruc
         self.__class__.cant_cliente += 1
-
-    def mostrar_datos(self):
-        # Muestra los datos del Cliente
-        Persona.mostrar_datos(self)
-        if self.ruc is not None:
-            print("Ruc:"+ str(self.ruc))
-
-    def mostrar_datos_det(self):
-        # Muestra los datos del Cliente detallada
-        Persona.mostrar_datos_det(self)
-        if self.ruc is not "":
-            print(str(self.ruc))
-        else:
-            print("Sin Ruc.")
 
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para

@@ -10,13 +10,6 @@ class Contacto:
         self.email = email
         self.red_social = red_social
 
-    def mostrar_datos(self):
-        # Muestra los datos de Contacto
-        print("\nDetalles del Contacto\n")
-        print("Celular: " + str(self.celular))
-        print("Email: " + str(self.email))
-        print("Red Social: " + str(self.red_social))
-
     def prompt_init():
         """Se crea un diccionario con los indices y valores necesarios para
         instanciar al objeto"""

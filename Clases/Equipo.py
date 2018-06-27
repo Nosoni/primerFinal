@@ -19,21 +19,6 @@ class Equipo():
         self.repuestos = []
         self.repuestos.append(repuesto)
 
-    def mostrar_datos(self):
-        print("\nDetalle equipo\n")
-        print(("Tipo: " + str(self.tipo)))
-        print(("Marca: " + str(self.marca)))
-        print(("Modelo: " + str(self.modelo)))
-        print(("Detalle físico: " + str(self.detalle)))
-        print(("Detalle del problema: " + str(self.detalle_problema)))
-        if self.repuestos:
-            # si existe repuesto, mostrara los datos
-            for repuesto in self.repuestos:
-                if repuesto is not None:
-                    repuesto.mostrar_datos()
-        else:
-            print("\n--Sin repuestos--")
-
     def add_repuesto(self, rep):
         """Comprueba si el repuesto que se quiere anhadir es instancia de la
         clase repuesto"""

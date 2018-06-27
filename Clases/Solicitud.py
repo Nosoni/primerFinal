@@ -18,21 +18,6 @@ class Solicitud:
         self.presupuesto = presupuesto
         self.estado = estado
 
-    def mostrar_datos(self):
-        print("\nDetalles de la solicitud\n")
-        print(("Nro. Solicitud: {}" + str(self.solicitud_numero)))
-        print(("Fecha: " + str(self.fecha)))
-        print(("Cliente: " + str(self.cliente.nombre + " " + self.cliente.apellido)))
-        print(("Empleado: " + str(self.empleado.nombre + " " + self.empleado.apellido)))
-        if self.equipos:
-            for equi in self.equipos:
-                if equi is not None:
-                    equi.mostrar_datos()
-        else:
-            print("--Sin equipos--")
-        print(("Presupuesto: " + str(self.presupuesto)))
-        print(("Estado: " + str(self.estado)))
-
     def add_equipo(self, equipo):
         self.equipos.append(equipo)
 
