@@ -1,0 +1,18 @@
+La parte de la programación funcional esta en
+Proyecto/Vistas/abm_solicitudes.py, línea .
+
+def calc_monto(self, lista):
+        return reduce(self.sumar, lista)
+
+# Retornamos los valores de los montos para calcular el total
+# Esta funcion trabaja con el concepto de generador
+def generador(self, dato):
+    if dato.equipo:
+        for equi in dato.equipo:
+            yield equi.costo_m
+            if equi.repuestos:
+                for rep in equi.repuestos:
+                    yield rep.costo
+
+def sumar(self, x, y):
+    return x + y

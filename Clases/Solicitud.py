@@ -43,7 +43,7 @@ class Solicitud:
                     cliente=encontrar_valor(bd1.clientes, input_alpha_r("Ingrese Cédula del cliente")),
                     empleado=encontrar_valor(bd1.empleados, input_alpha_r("Ingrese Cédula del empleado")),
                     equipo=encontrar_valor(bd1.equipos, input_alpha_r("Ingrese Cód. del equipo")),
-                    presupuesto=input_entero_r("Ingrese presupuesto3"),
+                    presupuesto=input_entero_r("Ingrese presupuesto"),
                     estado="pendiente")
 
     prompt_init = staticmethod(prompt_init)
