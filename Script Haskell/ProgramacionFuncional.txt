@@ -1,18 +1,29 @@
 La parte de la programación funcional esta en
-Proyecto/Vistas/abm_solicitudes.py, línea .
+Proyecto/Vistas/abm_solicitudes.py, línea 291.
 
-def calc_monto(self, lista):
+    def calc(self, dato):
+        if dato.fecha is not None:
+            self.fech = (dato.fecha + timedelta(days=dias_garantia))
+        montos = self.generador(dato)
+        money = self.calc_monto(montos)
+        messagebox.showinfo("Resultado", "Cliente: " + dato.cliente.Nombre + " " + dato.cliente.apellido +
+                            "\nEmpleado: " + dato.empleado.nombre + " " + dato.empleado.apellido + "\nMonto total: " + str(money) +
+                            "\nGarantia hasta: " + str(self.fech))
+        self.destroy()
+
+    def calc_monto(self, lista):
         return reduce(self.sumar, lista)
 
-# Retornamos los valores de los montos para calcular el total
-# Esta funcion trabaja con el concepto de generador
-def generador(self, dato):
-    if dato.equipo:
-        for equi in dato.equipo:
-            yield equi.costo_m
-            if equi.repuestos:
-                for rep in equi.repuestos:
-                    yield rep.costo
+    def generador(self, dato):
+        # Retornamos los valores de los montos para calcular el total
+        # Esta funcion trabaja con el concepto de generador
+        if dato.equipos:
+            for equi in dato.equipos:
+                if equi.repuestos:
+                    for rep in equi.repuestos:
+                        if rep is not None:
+                            if rep.precio:
+                                yield rep.precio
 
-def sumar(self, x, y):
-    return x + y
+    def sumar(self, x, y):
+        return x + y

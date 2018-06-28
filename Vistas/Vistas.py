@@ -42,8 +42,7 @@ class PanelPrincipal(Frame):
         menu_cliente = Menu(menubar, tearoff=0)
         menu_cliente.add_command(label="Agregar cliente", command=self.add_cliente)
         menu_cliente.add_command(label="Eliminar cliente", command=self.del_cliente)
-        menu_cliente.add_command(label="Listar clientes", command=self.list_cliente)
-        menu_cliente.add_command(label="Listar clientes detallado", command=self.list_cliente_det)
+        menu_cliente.add_command(label="Listar clientes", command=self.listar_cliente)
         menu_cliente.add_command(label="Agregar contacto a cliente", command=self.edit_cliente)
         menubar.add_cascade(label="Clientes", menu=menu_cliente)
 
@@ -51,7 +50,7 @@ class PanelPrincipal(Frame):
         menu_empleado = Menu(menubar, tearoff=0)
         menu_empleado.add_command(label="Agregar empleado", command=self.add_empleado)
         menu_empleado.add_command(label="Eliminar empleado", command=self.del_empleado)
-        menu_empleado.add_command(label="Listar empleado", command=self.list_empleado)
+        menu_empleado.add_command(label="Listar empleado", command=self.listar_empleado)
         menu_empleado.add_command(label="Editar salario", command=self.edit_salario)
         menubar.add_cascade(label="Empleados", menu=menu_empleado)
 
@@ -59,14 +58,14 @@ class PanelPrincipal(Frame):
         menu_repuesto = Menu(menubar, tearoff=0)
         menu_repuesto.add_command(label="Agregar repuesto", command=self.add_repuesto)
         menu_repuesto.add_command(label="Eliminar repuesto", command=self.del_repuesto)
-        menu_repuesto.add_command(label="Listar repuesto", command=self.list_repuesto)
+        menu_repuesto.add_command(label="Listar repuesto", command=self.listar_repuesto)
         menubar.add_cascade(label="Repuestos", menu=menu_repuesto)
 
         # Menú Equipos
         menu_equipos = Menu(menubar, tearoff=0)
         menu_equipos.add_command(label="Agregar equipo", command=self.add_equipo)
         menu_equipos.add_command(label="Eliminar equipo", command=self.del_equipo)
-        menu_equipos.add_command(label="Listar equipo", command=self.list_equipo)
+        menu_equipos.add_command(label="Listar equipo", command=self.listar_equipo)
         menubar.add_cascade(label="Equipos", menu=menu_equipos)
 
         #Menú Solicitud
@@ -74,10 +73,10 @@ class PanelPrincipal(Frame):
         menu_soli.add_command(label="Agregar Solicitud", command=self.add_soli)
         menu_soli.add_command(label="Actualizar Solicitud", command=self.act_soli)
         menu_soli.add_command(label="Eliminar solicitud", command=self.del_soli)
-        menu_soli.add_command(label="Listar solicitudes", command=self.list_soli)
+        menu_soli.add_command(label="Listar solicitudes", command=self.listar_soli)
         menu_soli.add_separator()
         menu_soli.add_command(label="Dar de baja solicitud", command=self.baja_soli)
-        menu_soli.add_command(label="Lista de bajas", command=self.list_bajas)
+        menu_soli.add_command(label="Lista de bajas", command=self.listar_bajas)
         menubar.add_cascade(label="Solicitud", menu=menu_soli)
 
         #Menú Ayuda
@@ -119,10 +118,8 @@ class PanelPrincipal(Frame):
         form = DelCliente(self.__panel_master)
         self.__vista_actual = form
 
-    def list_cliente(self):
-        pass
-
-    def list_cliente_det(self):
+    def listar_cliente(self):
+        list_cliente()
         pass
 
     def edit_cliente(self):
@@ -140,7 +137,8 @@ class PanelPrincipal(Frame):
         form = DelEmpleado(self.__panel_master)
         self.__vista_actual = form
 
-    def list_empleado(self):
+    def listar_empleado(self):
+        list_empleado()
         pass
 
     def edit_salario(self):
@@ -158,8 +156,8 @@ class PanelPrincipal(Frame):
         form = DelRepuesto(self.__panel_master)
         self.__vista_actual = form
 
-    def list_repuesto(self):
-        pass
+    def listar_repuesto(self):
+        list_repuesto()
 
     def add_equipo(self):
         self.limpiar()
@@ -171,7 +169,8 @@ class PanelPrincipal(Frame):
         form = DelEquipo(self.__panel_master)
         self.__vista_actual = form
 
-    def list_equipo(self):
+    def listar_equipo(self):
+        list_equipo()
         pass
 
     def add_soli(self):
@@ -189,7 +188,8 @@ class PanelPrincipal(Frame):
         form = DelSoli(self.__panel_master)
         self.__vista_actual = form
 
-    def list_soli(self):
+    def listar_soli(self):
+        list_soli()
         pass
 
     def baja_soli(self):
@@ -197,8 +197,8 @@ class PanelPrincipal(Frame):
         form = BajaSoli(self.__panel_master)
         self.__vista_actual = form
 
-    def list_bajas(self):
-        pass
+    def listar_bajas(self):
+        list_bajas()
 
 
 class PanelLogin(PanedWindow):

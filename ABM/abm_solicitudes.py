@@ -7,6 +7,7 @@ from datetime import timedelta, datetime
 from functools import reduce
 from Controlador.Util import encontrar_valor
 from Controlador.VistaUtil import del_datos
+
 dias_garantia = 30
 
 
@@ -199,7 +200,8 @@ class ActSoli(PanedWindow):
                     if self.get_presupuesto_entry().get() != "":
                         solicitud.presupuesto = self.get_presupuesto_entry().get()
                     if len(self.equipArray) > 0:
-                        solicitud.equipos.append(self.equipArray)
+                        for equi in self.equipArray:
+                            solicitud.equipos.append(equi)
                     messagebox.showinfo("Informacion", "Solicitud actualizado.")
                     self.destroy()
                 else:
@@ -236,17 +238,20 @@ class DelSoli(PanedWindow):
 
     def eliminar(self):
         try:
-            if messagebox.askyesno("Eliminar", "Eliminar solicitud?"):
-                val = encontrar_valor(bd.solicitudes, "solicitud_numero", self.get_soli_entry().get())
-                if val is not None:
-                    if del_datos(bd.solicitudes, val):
-                        messagebox.showinfo("Eliminado", "Solicitud eliminada.")
-                        self.destroy()
+            if self.get_soli_entry().get() != "":
+                if messagebox.askyesno("Eliminar", "Eliminar solicitud?"):
+                    val = encontrar_valor(bd.solicitudes, "solicitud_numero", self.get_soli_entry().get())
+                    if val is not None:
+                        if del_datos(bd.solicitudes, val):
+                            messagebox.showinfo("Eliminado", "Solicitud eliminada.")
+                            self.destroy()
+                        else:
+                            messagebox.showinfo("Atención", "Ocurrió un error al eliminar dato.")
+                            self.destroy()
                     else:
-                        messagebox.showinfo("Atención", "Ocurrió un error al eliminar dato.")
-                        self.destroy()
-                else:
-                    messagebox.showwarning("Atención", "No existe solicitud.")
+                        messagebox.showwarning("Atención", "No existe solicitud.")
+            else:
+                messagebox.showwarning("Atención", "Ingrese Nro. de solicitud.")
         except:
             messagebox.showerror("Error", "Ocurrió un error inesperado al elimnar la solicitud.")
 
@@ -263,7 +268,7 @@ class BajaSoli(PanedWindow):
 
     def inicializar(self):
         Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
-        Label(self, text="Ingrese numero de solicituda a procesar*: ").grid(
+        Label(self, text="Ingrese número de solicitud a procesar*: ").grid(
             row=2, column=1)
         Button(self, text="Procesar", command=self.procesar).grid(
             row=3, column=1)
@@ -278,25 +283,32 @@ class BajaSoli(PanedWindow):
 
     def procesar(self):
         try:
-            pos = int(self.get_soli_entry().get())
-            if(messagebox.askyesno("Procesar", "Procesar solicitud?")):
-                dato = bd.solicitudes.pop(pos - 1)
-                bd.solicitudes_baja.append(dato)
-                messagebox.showinfo("Informacion", "Solicitud procesada")
-                self.calc(dato)
+            if self.get_soli_entry().get() != "":
+                if messagebox.askyesno("Procesar", "Procesar solicitud?"):
+                    val = encontrar_valor(bd.solicitudes, "solicitud_numero", self.get_soli_entry().get())
+                    if val is not None:
+                        val.cambiar_estado()
+                        self.calc(val)
+                        if del_datos(bd.solicitudes, val):
+                            bd.solicitudes_baja.append(val)
+                            messagebox.showinfo("Procesada", "Solicitud dada de baja.")
+                        else:
+                            messagebox.showinfo("Atención", "Ocurrió un error al eliminar dato.")
+            else:
+                messagebox.showinfo("Atención", "Ingrese nro. de solicitud.")
         except:
             messagebox.showerror("Infor", "No existe solicitud")
 
-    #Funcion que calcula los valores para procesar una solicitud
+    # Funcion que calcula los valores para procesar una solicitud
     def calc(self, dato):
-            if dato.fecha is not None:
-                self.fech = (dato.fecha + timedelta(days=dias_garantia))
-            montos = self.generador(dato)
-            money = self.calc_monto(montos)
-            messagebox.showinfo("Resultado", "Cliente: " + dato.cliente +
-            "\nEmpleado: " + dato.empleado + "\nMonto total: " + str(money) +
-            "\nGarantia hasta: " + str(self.fech))
-            self.destroy()
+        if dato.fecha is not None:
+            self.fech = (dato.fecha + timedelta(days=dias_garantia))
+        montos = self.generador(dato)
+        money = self.calc_monto(montos)
+        messagebox.showinfo("Resultado", "Cliente: " + dato.cliente.Nombre + " " + dato.cliente.apellido +
+                            "\nEmpleado: " + dato.empleado.nombre + " " + dato.empleado.apellido + "\nMonto total: " + str(money) +
+                            "\nGarantia hasta: " + str(self.fech))
+        self.destroy()
 
     # Utilizamos la funcion reduce para sumar todos los elementos de una lista
     # --------------Parte equivalente a programacion funcional----------------
@@ -306,12 +318,13 @@ class BajaSoli(PanedWindow):
     def generador(self, dato):
         # Retornamos los valores de los montos para calcular el total
         # Esta funcion trabaja con el concepto de generador
-        if dato.equipo:
-            for equi in dato.equipo:
-                yield equi.costo_m
+        if dato.equipos:
+            for equi in dato.equipos:
                 if equi.repuestos:
                     for rep in equi.repuestos:
-                        yield rep.costo
+                        if rep is not None:
+                            if rep.precio:
+                                yield rep.precio
 
     def sumar(self, x, y):
         return x + y

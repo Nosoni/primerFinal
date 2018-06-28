@@ -44,13 +44,11 @@ def list_datos(datos):
         while ind < largo:
             listbox.insert(END, lista[ind])
             ind += 1
-
     #ventana.focus_set()
     #ventana.grab_set()
     #OBS: trate de crear un focus permanente en esta ventana para tener que
     #cerrarla para seguir usando el programa pero no logre hacerlo
     ventana.overrideredirect(1)
-
     cargarlistbox(datos, list1)
     ventana.mainloop()
 
@@ -62,34 +60,42 @@ def list_soli(soli=bd.solicitudes):
     ep = "                  "
     ep1 = "                                      "
     for sol in soli:
-        datos.append("{}- Cliente: {}".format(bucle, sol.cliente))
-        datos.append("     Empleado: {}".format(sol.empleado))
+        datos.append("{}- Nro Solicitud: {}".format(bucle, sol.solicitud_numero))
+        datos.append("     Fecha: {}".format(sol.fecha))
+        datos.append("     Cliente: {}".format(sol.cliente.nombre + " " + sol.cliente.apellido))
+        datos.append("     Empleado: {}".format(sol.empleado.nombre + " " + sol.empleado.apellido))
         datos.append("     Equipos: ")
         bucle2 = 1
         for equi in sol.equipo:
-            datos.append("{}-{}- Tipo: {}".format(ep, bucle2, equi.tipo))
-            datos.append("{}-Marca: {}".format(ep, equi.marca))
-            datos.append("{}-Modelo: {}".format(ep, equi.modelo))
-            datos.append("{}-Detalle: {}".format(ep, equi.detalle))
-            datos.append("{}-Problema: {}".format(ep,
-                equi.detalle_problema))
-            datos.append("{}-Costo: {}".format(ep, equi.costo_m))
-            datos.append("{}-Estado: {}".format(ep, equi.estado))
-            datos.append("{}-Repuestos:".format(ep))
+            datos.append("{}- Nro. Equipo: {}".format(ep, bucle2, equi.nro_equipo))
+            datos.append("     Tipo: {}".format(bucle, equi.tipo))
+            datos.append("     Marca: {}".format(bucle, equi.marca))
+            datos.append("     Modelo: {}".format(equi.modelo))
+            datos.append("     Detalle: {}".format(equi.detalle))
+            datos.append("     Detalle del problema: {}".format(equi.detalle_problema))
             bucle1 = 1
-            if equi.repuestos:
-                for rep in equi.repuestos:
-                    datos.append("{}={}- Marca: {}".format(ep1, bucle1,
-                        rep.marca))
-                    datos.append("{}=Modelo: {}".format(ep1, rep.modelo))
-                    datos.append("{}=Costo: {}".format(ep1, rep.costo))
-                    datos.append("")
-                    bucle1 += 1
+            for rep in equi.repuestos:
+                datos.append("{}- Código: {}".format(ep1, bucle1, rep.cod))
+                datos.append("     Marca: {}".format(bucle, rep.marca))
+                datos.append("     Modelo: {}".format(rep.modelo))
+                datos.append("     Precio: {}".format(rep.precio))
+                if type(rep) is Disco:
+                    datos.append("     Capacidad: {}".format(rep.capacidad))
+                    datos.append("     ==Disco==")
+                elif type(rep) is Cartucho:
+                    datos.append("     Color: {}".format(rep.color))
+                    datos.append("     ==Cartucho==")
+                elif type(rep) is Memoria:
+                    datos.append("     Tamanho: {}".format(rep.capacidad))
+                    datos.append("     ==Memoria==")
+                else:
+                    datos.append("     Otro: {}".format(rep.tipo))
+                    datos.append("     ==Otro==")
+                datos.append("")
+                bucle1 += 1
             datos.append("")
             bucle2 += 1
-
         datos.append("")
-
         bucle += 1
     list_datos(datos)
 
@@ -104,15 +110,16 @@ def list_cliente():
     datos = ['------======DETALLE CLIENTES======------']
     bucle = 1
     for cli in bd.clientes:
-        datos.append("{}- Cedula: {}".format(bucle, cli.cedula))
+        datos.append("{}- Cédula: {}".format(bucle, cli.cedula))
         datos.append("     Nombre: {}".format(cli.nombre))
         datos.append("     Apellido: {}".format(cli.apellido))
-        datos.append("     Direccion: {}".format(cli.direccion))
+        datos.append("     Dirección: {}".format(cli.direccion))
         datos.append("     Contactos: ")
-        if cli.contactos:
-            datos.append("     -----Tel: {}".format(cli.contactos.tel))
-            datos.append("     -----Cel: {}".format(cli.contactos.cel))
-            datos.append("     -----Email: {}".format(cli.contactos.emails))
+        if cli.contactos != [None]:
+            for contacto in cli.contactos:
+                datos.append("     -----Celular: {}".format(contacto.celular))
+                datos.append("     -----Email: {}".format(contacto.email))
+                datos.append("     -----Red Social: {}".format(contacto.red_social))
         datos.append("     Ruc: {}".format(cli.ruc))
         datos.append("")
         datos.append("")
@@ -125,18 +132,16 @@ def list_empleado():
     datos = ['------======DETALLE EMPLEADOS======------']
     bucle = 1
     for emp in bd.empleados:
-        datos.append("{}- Cedula: {}".format(bucle, emp.cedula))
+        datos.append("{}- Cédula: {}".format(bucle, emp.cedula))
         datos.append("     Nombre: {}".format(emp.nombre))
         datos.append("     Apellido: {}".format(emp.apellido))
-        datos.append("     Direccion: {}".format(emp.direccion))
+        datos.append("     Dirección: {}".format(emp.direccion))
         datos.append("     Contactos: ")
-        if emp.contactos:
-            datos.append("     -----Tel: {}".format(emp.contactos.tel))
-            datos.append("     -----Cel: {}".format(emp.contactos.cel))
-            datos.append("     -----Email: {}".format(emp.contactos.emails))
-        datos.append("     Tecnico: {}".format(emp.tecnico))
-        datos.append("     Fecha Inicio: {}".format(emp.fecha_ini))
-        datos.append("     Sueldo: {}".format(emp.sueldo))
+        for contacto in emp.contactos:
+            datos.append("     -----Celular: {}".format(contacto.cel))
+            datos.append("     -----Email: {}".format(contacto.email))
+            datos.append("     -----Email: {}".format(contacto.red_social))
+        datos.append("     Salario: {}".format(emp.salario))
         datos.append("")
         datos.append("")
         bucle += 1
@@ -148,18 +153,19 @@ def list_repuesto():
     datos = ['------======DETALLE REPUESTOS======------']
     bucle = 1
     for rep in bd.repuestos:
-        datos.append("{}- Marca: {}".format(bucle, rep.marca))
+        datos.append("{}- Código: {}".format(bucle, rep.cod))
+        datos.append("     Marca: {}".format(bucle, rep.marca))
         datos.append("     Modelo: {}".format(rep.modelo))
-        datos.append("     Costo: {}".format(rep.costo))
+        datos.append("     Precio: {}".format(rep.precio))
         if type(rep) is Disco:
             datos.append("     Capacidad: {}".format(rep.capacidad))
             datos.append("     ==Disco==")
-        elif type(rep) is Memoria:
-            datos.append("     Tamanho: {}".format(rep.capacidad))
-            datos.append("     ==Memoria==")
         elif type(rep) is Cartucho:
             datos.append("     Color: {}".format(rep.color))
             datos.append("     ==Cartucho==")
+        elif type(rep) is Memoria:
+            datos.append("     Tamanho: {}".format(rep.capacidad))
+            datos.append("     ==Memoria==")
         else:
             datos.append("     Otro: {}".format(rep.tipo))
             datos.append("     ==Otro==")
@@ -167,6 +173,62 @@ def list_repuesto():
         datos.append("")
         bucle += 1
     list_datos(datos)
+
+def list_empleado():
+    """Genera una lista con los datos de los empleados"""
+    datos = ['------======DETALLE EMPLEADOS======------']
+    bucle = 1
+    for emp in bd.empleados:
+        datos.append("{}- Cédula: {}".format(bucle, emp.cedula))
+        datos.append("     Nombre: {}".format(emp.nombre))
+        datos.append("     Apellido: {}".format(emp.apellido))
+        datos.append("     Dirección: {}".format(emp.direccion))
+        datos.append("     Contactos: ")
+        for contacto in emp.contactos:
+            datos.append("     -----Celular: {}".format(contacto.cel))
+            datos.append("     -----Email: {}".format(contacto.email))
+            datos.append("     -----Email: {}".format(contacto.red_social))
+        datos.append("     Salario: {}".format(emp.salario))
+        datos.append("")
+        datos.append("")
+        bucle += 1
+    list_datos(datos)
+
+
+def list_equipo():
+    """Genera una lista con los datos de los repuestos"""
+    datos = ['------======DETALLE REPUESTOS======------']
+    bucle = 1
+    for equi in bd.equipos:
+        datos.append("{}- Nro. Equipo: {}".format(bucle, equi.nro_equipo))
+        datos.append("     Tipo: {}".format(bucle, equi.tipo))
+        datos.append("     Marca: {}".format(bucle, equi.marca))
+        datos.append("     Modelo: {}".format(equi.modelo))
+        datos.append("     Detalle: {}".format(equi.detalle))
+        datos.append("     Detalle del problema: {}".format(equi.detalle_problema))
+        for rep in equi.repuestos:
+            datos.append("{}- Código: {}".format(bucle, rep.cod))
+            datos.append("     Marca: {}".format(bucle, rep.marca))
+            datos.append("     Modelo: {}".format(rep.modelo))
+            datos.append("     Precio: {}".format(rep.precio))
+            if type(rep) is Disco:
+                datos.append("     Capacidad: {}".format(rep.capacidad))
+                datos.append("     ==Disco==")
+            elif type(rep) is Cartucho:
+                datos.append("     Color: {}".format(rep.color))
+                datos.append("     ==Cartucho==")
+            elif type(rep) is Memoria:
+                datos.append("     Tamanho: {}".format(rep.capacidad))
+                datos.append("     ==Memoria==")
+            else:
+                datos.append("     Otro: {}".format(rep.tipo))
+                datos.append("     ==Otro==")
+            datos.append("")
+        datos.append("")
+        datos.append("")
+        bucle += 1
+    list_datos(datos)
+
 
 def del_datos(lista, dato):
     """Permite eliminar un objeto"""

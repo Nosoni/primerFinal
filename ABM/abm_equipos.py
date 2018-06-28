@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 from tkinter import *
 from tkinter import messagebox
@@ -113,7 +114,10 @@ class AddEquipo(PanedWindow):
             det_pro = self.get_detalle_problema_entry().get()
 
             if self.val_equi(nro, tipo, mar, mod, det_pro):
-                bd.equipos.append(Equipo(nro, tipo, mar, mod, det, det_pro, self.repuestoArray))
+                equi = Equipo(nro, tipo, mar, mod, det, det_pro)
+                for repuesto in self.repuestoArray:
+                    equi.repuestos.append(repuesto)
+                bd.equipos.append(equi)
                 messagebox.showinfo("Informacion", "Equipo agregado.")
                 self.destroy()
         except Exception as e:
